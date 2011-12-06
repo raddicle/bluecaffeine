@@ -1,0 +1,1 @@
+Thanks for registering with us. We will inform you when we open for business.

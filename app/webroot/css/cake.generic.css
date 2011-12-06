@@ -1,0 +1,452 @@
+#bar { width:100%; height:65px; padding: 0; background:url(../img/bar.png) repeat-x; }
+
+* {
+    color: #f0f9ff;
+    font-size: 97.5%;
+    font-family: verdana,helvetica,arial,sans-serif;
+    margin:0;
+    padding:0;
+}
+
+/** General Style Info **/
+body {
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlMTczMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ2JSIgc3RvcC1jb2xvcj0iIzJjNTM5ZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk4JSIgc3RvcC1jb2xvcj0iIzBlMTIzNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=) repeat-y;
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+    font-size:90%;
+    margin: 0;
+    padding: 0;
+}
+
+select, option{
+    color: black;
+}
+
+a {
+    color: #003d4c;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+a:hover {
+    color: #aaa;
+    text-decoration:none;
+}
+
+a img {
+    border:none;
+}
+
+botton, span{
+        color: #333;
+}
+
+textarea,
+input {
+    width:92%;
+    border:1px solid #899caa;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    color:#3a454d;
+    padding:8px 8px;
+    box-shadow:inset 0px 1px 3px #bbb;
+    -webkit-box-shadow:inset 0px 1px 3px #bbb;
+    -moz-box-shadow:inset 0px 1px 3px #bbb;
+    font-size:12px;
+}
+
+
+form {
+    border:1px solid #899caa;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    margin-top:-1px;
+    background:#d2e0ea;
+    padding:6px;
+}
+
+form .error,
+form .error-message {
+    color: #9E2424;
+    font-weight: bold;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+label {
+    color: #333;
+    display:block;
+    float:none;
+    margin:6px 0 0 0;
+    font-size: 12px;
+}
+
+fieldset {
+    float:none;
+    display:block;
+    border:0;
+    padding:0;
+    background:#fff;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    padding:5px 5px;
+    margin:0;
+}
+
+/** Tables **/
+table {
+    border-right:0;
+    clear: both;
+    margin-bottom: 10px;
+    width: 100%;
+    background: #f0f9ff;
+}
+th {
+    border:0;
+    color: #333;
+    border-bottom:2px solid #555;
+    text-align: left;
+    padding:4px;
+}
+th a {
+    display: block;
+    padding: 2px 4px;
+    text-decoration: none;
+}
+th a.asc:after {
+    content: ' ⇣';
+}
+th a.desc:after {
+    content: ' ⇡';
+}
+table tr td {
+    padding: 0px;
+    margin: 0px;
+    color: #333;
+    background: #f0f9ff;
+    text-align: left;
+    vertical-align: top;
+}
+table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+td.actions {
+    text-align: center;
+    white-space: nowrap;
+}
+table td.actions a {
+    margin: 0px 6px;
+    padding:2px 5px;
+}
+
+/** Forms **/
+form .required {
+    font-weight: bold;
+}
+form .required label:after {
+    color: #e32;
+    content: '*';
+    display:inline;
+}
+form div.submit {
+    border: 0;
+    clear: both;
+    margin-top: 10px;
+}
+
+
+/** Scaffold View **/
+dl {
+    background: white;
+    line-height: 2em;
+    margin: 0em 0em;
+}
+dl dd:nth-child(4n+2),
+dl dt:nth-child(4n+1) {
+    background: #f4f4f4;
+}
+dt {
+    padding-left: 4px;
+    vertical-align: top;
+    background: #f0f9ff;
+    color: black;
+    font-weight: bold;
+}
+dd {
+    margin-left: 10em;
+    margin-top: -2em;
+    vertical-align: top;
+    background: #f0f9ff;
+    color: black;   
+}
+
+.imageBorder{
+    margin-bottom: 15px;
+    display: inline-block;
+    behavior: url(lib/pie/PIE.htc); 
+    border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px;
+}
+
+.ribbon {
+    margin-bottom: 15px;
+    display: inline-block;
+    behavior: url(lib/pie/PIE.htc); 
+    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+    box-shadow: 1px 1px 1px #888; 
+    -moz-box-shadow: 1px 1px 1px #888; 
+    -webkit-box-shadow: 1px 1px 1px #888;
+    border: 1px solid #7d8893;
+}
+
+
+/* menu */
+#menu{ margin:0px; padding:0px; list-style:none; color:#fff; line-height:50px; display:inline-block; float:left; z-index:1000; }
+#menu a { color:#fff; text-decoration:none; }
+#menu > li {background:#7cb7e3 none repeat scroll 0 0; cursor:pointer; float:left; position:relative;padding:0px 10px;}
+#menu > li a:hover {color:#B0D730;}
+/* sub-menus*/
+#menu ul { padding:0px; margin:0px; display:block; display:inline; z-index: 1000;}
+#menu li ul { position:absolute; top:0px; margin-top:50px; width:150px; line-height:16px; background-color:#7cb7e3; color:#0395CC; /* for IE */ display:none; }
+#menu li:hover ul { display:block;}
+#menu li ul li{ display:block; margin:5px 20px; padding: 5px 0px;  border-top: dotted 1px #606060; list-style-type:none; }
+#menu li ul li:first-child { border-top: none; }
+#menu li ul li a { display:block; color:#fff; }
+#menu li ul li a:hover { color:#000; }
+/* main submenu */
+/* search */
+.searchContainer div { background-color:#7cb7e3; display:inline; padding:5px;}
+.searchContainer input[type="text"] {border:none;}
+.searchContainer img { vertical-align:middle;}
+/* corners*/
+#menu .corner_inset_left { position:absolute; top:0px; left:-12px;}
+#menu .corner_inset_right { position:absolute; top:0px; left:150px;}
+#menu .last { background:transparent none repeat scroll 0% 0%; margin:0px; padding:0px; border:none; position:relative; border:none; height:0px;}
+#menu .corner_left { position:absolute; left:0px; top:0px;}
+#menu .corner_right { position:absolute; left:132px; top:0px;}
+#menu .middle { position:absolute; left:18px; height: 20px; width: 115px; top:0px;}
+
+.dataview {
+    background: #cbd6e0;
+    border: 1px solid #7D8893;
+}
+
+.dataview th {
+    font-weight: bold;
+    background: #cbd6e0;
+    border-bottom: 1px solid #7d8893;
+}
+
+.dataview tr td {
+    padding: 3px 8px;
+    background: #fff;
+}
+
+.dataview thead td {
+    font-weight: bold;
+    border-bottom: 1px solid #999;
+}
+
+.dataview thead a {
+    color: black;
+    text-decoration: none;
+}
+
+.dataview tbody td {
+    border-left: 1px solid #D9D9D9;
+}
+
+.dataview tbody tr.even td {
+    background: #eee;
+}
+
+
+.icon{
+    text-indent: 20px;
+    height: 16px;
+    display: inline-block;
+    padding-right: 10px;
+    background-repeat: no-repeat;
+}
+
+.add{
+    background-image: url(../img/add.png) ;
+}
+
+.edit{
+    background-image: url(../img/edit.png) ;
+}
+
+.delete{
+    background-image: url(../img/delete.png) ;
+}
+
+.backImage{
+    z-index:-1;
+    width: 100%;
+    hight: 100%;
+}
+
+
+/*-------LOGIN STARTS HERE -------*/
+
+/* Login Container (default to float:right) */
+.menuButtonContainer {
+    position:relative;
+    float:right;
+    font-size:12px;
+    z-index:30;
+}
+
+/* Login Button */
+.menuButton { 
+    margin-left: 5px;
+    text-decoration: none;
+    display:inline-block;
+    float:right;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    position:relative;
+    z-index:30;
+    cursor:pointer;
+}
+
+/* Start - Login Button Text */
+.menuButton span {
+    color:#445058; 
+    font-weight:bold; 
+    text-shadow:1px 1px #fff; 
+    padding:7px 29px 9px 10px;
+    background:url(../img/loginArrow.png) no-repeat 85% 7px;
+    display:block
+}
+
+.menuButton:hover {
+    background:url(../img/buttonbgHover.png) repeat-x;
+}
+
+/* Login Box */
+.menuButtonBox {
+    position:absolute;
+    top:25px;
+    right:0;
+    display:none;
+}
+
+/* If the Login Button has been clicked */    
+.menuButton.active {
+    border-radius:3px 3px 0 0;
+}
+
+.menuButton.active span {
+    background-position:85% -76px;
+}
+/* End - Login Button Text */
+
+
+
+/**CSS for autocomplete component**/
+.autoCompleteDiv    {
+    position: absolute;
+    border: 1px solid #888;
+    margin: 0px;
+    padding: 2px;
+    display: none;
+    background: white;
+}
+.autoCompleteDiv a:hover {
+    background: none;
+    background-color: darkblue;
+    color: white;
+    font-weight: normal;
+}
+.autoCompleteDiv a {
+    background: none;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    padding: 2px;
+    margin: 0px;
+    display: block;
+} 
+
+#flashMessage{    
+    color: #9E2424;
+    font-weight: bold;
+}
+
+
+.ui-dialog-title{
+    float: right; 
+    margin-top: 6px; 
+    color:#445058; 
+    font-weight:bold; 
+    text-shadow:1px 1px #fff; 
+    font-size: 12px;
+}
+
+
+
+/* Login Form */
+form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6px;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    padding:6px;
+}
+
+/* Default Input */
+form div {
+    margin:0 0 10px 0;
+    border:0;
+    padding:3px;
+    clear: both;
+}
+
+form fieldset {
+    border: 0px;
+}
+
+form fieldset label{
+    float: left;
+    padding: 8px 10px 10px 0;
+    text-align: left;
+}
+
+form fieldset input, form fieldset button{
+    float: right;
+    margin-top: 6px;
+    border:1px solid #899caa;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    color:#3a454d;
+    font-weight:bold;
+    padding:8px 8px;
+    box-shadow:inset 0px 1px 3px #bbb;
+    -webkit-box-shadow:inset 0px 1px 3px #bbb;
+    -moz-box-shadow:inset 0px 1px 3px #bbb;
+    font-size:12px;
+}
+
+/** Forms **/
+form .required {
+    font-weight: bold;
+}
+
+form .required label:after {
+    color: #e32;
+    content: '*';
+    display:inline;
+}
+
+form div.submit {
+    border: 0;
+    margin-top: 10px;
+}
