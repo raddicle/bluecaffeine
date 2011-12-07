@@ -6,7 +6,7 @@
 class Band extends AppModel {
 
     var $name = "Band";
-    var $hasMany = array('BandMember', 'Post', 'Bandasset');
+    var $hasMany = array('BandMember', 'Post', 'Bandasset', 'BandNews');
     var $hasAndBelongsToMany = array(
         'User' => array('with' => 'BandMember'));
     var $validate = array('bandName' => array(

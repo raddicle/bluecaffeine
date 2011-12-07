@@ -11,9 +11,7 @@ foreach ($band['Bandasset'] as $asset):
         <tr>
             <td>
                 <?php
-                echo $this->Html->link($asset['file_name']
-                    , 'http://' . $_SERVER['SERVER_ADDR'] . $this->Html->url('/content/band/songs/song_' . $asset['id'] . '.mp3')
-                    , array('id' => 'songLink' . $asset['id']));
+                echo $this->Html->link($asset['file_name'], '/content/band/songs/song_' . $asset['id'] . '.mp3');
                 ?>
             </td>
             <td>
@@ -21,7 +19,7 @@ foreach ($band['Bandasset'] as $asset):
                 echo $this->Js->link('', array('controller' => 'Bandassets'
                     , 'action' => 'delete'
                     , $asset['id'], $mediaType)
-                    , array('update' => ($mediaType == 1 ? '#songSection' : '#videoSection')
+                        , array('update' => ($mediaType == 1 ? '#songSection' : '#videoSection')
                     , 'class' => 'icon delete'
                     , 'style' => 'margin-left: 10px; width: 20px;'
                     , 'confirm' => 'Are you sure you want to delete?'
@@ -36,7 +34,10 @@ endforeach;
 ?>
 <script>
     $(document).ready(function() {
+        try{
         YAHOO.MediaPlayer.addTracks(document.getElementById("songLink<?php echo $asset['id'] ?>"));
+        } catch(err) {
+        }
     });
 </script>
 

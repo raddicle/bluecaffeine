@@ -1,4 +1,4 @@
-<div style='display: table;'>
+<div style='display: table; width: 100%'>
     <div style='display: table-row;'>
         <div style='display: table-cell; width: 50%'>
             <?php
@@ -64,7 +64,7 @@
                         if ($asset['media_type'] == 1) :
                             ?>
                             <div>
-                                <?php echo $this->Html->link($asset['file_name'], '/content/band/songs/song_'.$asset['id'].'.mp3');?>
+                                <?php echo $this->Html->link($asset['file_name'], '/content/band/songs/song_'.$asset['id'].'.mp3', array('style'=>'color: white;'));?>
                             </div>
                             <?php
                         endif;
@@ -83,10 +83,8 @@
                     foreach ($band['Bandasset'] as $asset):
                         if ($asset['media_type'] == 2) :
                             ?>
-                            <div>
-                                <?php echo $this->Html->link($asset['file_name'], '/content/band/songs/song_'.$asset['id'].'.mp3');?>
-                                
-                                <?php echo $asset['file_name']; ?>
+                            <div>       
+                                <?php echo $this->Html->link($asset['file_name'], '/content/band/songs/song_'.$asset['id'].'.mp3', array('style'=>'color: white;'));?>
                             </div>
                             <?php
                         endif;

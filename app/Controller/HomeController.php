@@ -8,7 +8,8 @@ class HomeController extends AppController {
     var $components = array('Session', 'Auth');
 
     function index() {
-        
+
+        $this->loadModel("Post");
     }
 
 }

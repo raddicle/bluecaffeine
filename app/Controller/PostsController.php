@@ -20,8 +20,6 @@ class PostsController extends AppController {
 
     $this->loadModel('Band');
     $this->Band->recursive = 1;
-    $this->Session->read("bandId");
-    $test = $this->Band->findById($this->Session->read("bandId"));
     $this->set('band', $this->Band->findById($this->Session->read("bandId")));
     $this->render('list', 'ajax');
   }
@@ -37,8 +35,6 @@ class PostsController extends AppController {
       }
         $this->loadModel('Band');
         $this->Band->recursive = 1;
-        $this->Session->read("bandId");
-        //$test = $this->Band->findById($this->Session->read("bandId"));
         $this->set('band', $this->Band->findById($this->Session->read("bandId")));
         $this->render('list', 'ajax');
   }

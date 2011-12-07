@@ -198,9 +198,6 @@ dd {
     display: inline-block;
     behavior: url(lib/pie/PIE.htc); 
     border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
-    box-shadow: 1px 1px 1px #888; 
-    -moz-box-shadow: 1px 1px 1px #888; 
-    -webkit-box-shadow: 1px 1px 1px #888;
     border: 1px solid #7d8893;
 }
 
@@ -388,65 +385,4 @@ dd {
     font-weight:bold; 
     text-shadow:1px 1px #fff; 
     font-size: 12px;
-}
-
-
-
-/* Login Form */
-form {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 6px;
-    border-radius:3px;
-    -moz-border-radius:3px;
-    padding:6px;
-}
-
-/* Default Input */
-form div {
-    margin:0 0 10px 0;
-    border:0;
-    padding:3px;
-    clear: both;
-}
-
-form fieldset {
-    border: 0px;
-}
-
-form fieldset label{
-    float: left;
-    padding: 8px 10px 10px 0;
-    text-align: left;
-}
-
-form fieldset input, form fieldset button{
-    float: right;
-    margin-top: 6px;
-    border:1px solid #899caa;
-    border-radius:3px;
-    -moz-border-radius:3px;
-    color:#3a454d;
-    font-weight:bold;
-    padding:8px 8px;
-    box-shadow:inset 0px 1px 3px #bbb;
-    -webkit-box-shadow:inset 0px 1px 3px #bbb;
-    -moz-box-shadow:inset 0px 1px 3px #bbb;
-    font-size:12px;
-}
-
-/** Forms **/
-form .required {
-    font-weight: bold;
-}
-
-form .required label:after {
-    color: #e32;
-    content: '*';
-    display:inline;
-}
-
-form div.submit {
-    border: 0;
-    margin-top: 10px;
 }

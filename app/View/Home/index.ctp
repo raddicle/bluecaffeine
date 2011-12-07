@@ -35,24 +35,40 @@
     </div>
 </div>
 
-<div style="display: table; text-align: center; border: 1px solid black; width: 100%; margin-top: 20px;">
+<div style="display: table; text-align: center; width: 100%; margin-top: 20px; ">
+    <div style="display: table-cell; width: 200px; padding: 6px; vertical-align: top; font-weight: bold;">
+        <div class="ribbon" style="width: 100%; padding: 6px;">
+            back to home
+            <div>
+                <?php
+                echo $this->Html->image('home/home_small.jpg'
+                        , array('url' => '/', 'class' => 'imageBorder', 'style' => 'width: 100%;'));
+                ?>
+            </div>
 
-    <div style="display: table-cell; padding-right: 20px; width: 200px;">
-        <?php
-        echo $this->element('adv');
-        ?>
-    </div>
-    <div style="display: table-cell; padding-right: 20px;">
-        <div>
-            featured
+            <div>
+                <?php
+                echo $this->Html->image('home/getFound.png'
+                        , array('class' => 'imageBorder', 'style' => 'width: 100%;'));
+                ?>
+            </div>
         </div>
-        <?php
-        echo $this->element('featuredBand');
-        ?>
     </div>
-    <div style="display: table-cell; width: 200px;">
-        <?php
-        echo $this->element('blog');
-        ?>
+    <div style="display: table-cell;">
+        <div style="font-weight: bold; width: 95%; padding: 6px 0 6px 0; margin: 6px;" class="ribbon">
+            featured
+            <?php
+            echo $this->element('featuredBand');
+            ?>
+        </div>
+    </div>
+    <div style="padding: 6px; display: table-cell; width: 300px; vertical-align: top;">
+        <div style="width: 100%;">
+            <div class="ribbon" style="width:100%; padding: 6px;">
+                <?php
+                echo $this->element('blog');
+                ?>
+            </div>
+        </div>
     </div>
 </div>

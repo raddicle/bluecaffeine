@@ -206,7 +206,7 @@
 </div>
 <div id="accordion" style="padding-left: 5px; width: 60%; float: right;">
     <h3><a href="#">Manage Account</a>
-        <div style="margin-left: 35px; font-size: 80%;">Update your Bio, Email and other details</div>
+        <div style="margin-left: 35px; font-size: 80%; color: grey; ">Update your Bio, Email and other details</div>
     </h3>
     <div style="text-align: center;">
         <button id="accountSetting" class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all" style="margin: 3px; width: 250px">
@@ -219,7 +219,7 @@
     </div>
     <h3>
         <a href="#">Upload Songs</a>
-        <div style="margin-left: 35px; font-size: 80%;">Upload music and write about it!</div>
+        <div style="margin-left: 35px; font-size: 80%;color: grey;">Upload music and write about it!</div>
     </h3>
     <div>
         <a href="#" id="addNewSong" onclick='resetSongForm(); $("#songDialog").dialog( "open" );'>Add Song</a>
@@ -236,7 +236,7 @@
     </div>
     <h3>
         <a href="#">Upload Videos</a>
-        <div style="margin-left: 35px; font-size: 80%;">Upload Videos</div>
+        <div style="margin-left: 35px; font-size: 80%; color: grey;">Upload Videos</div>
     </h3>
     <div>
         <a href="#" id="addNewVideo" onclick='resetSongForm(); $("#videoDialog").dialog( "open" );'>Add Video</a>
@@ -253,12 +253,23 @@
     </div>
     <h3>
         <a href="#">Manage Your Blogs</a>
-        <div style="margin-left: 35px; font-size: 80%;">Time to write a new blog!</div>
+        <div style="margin-left: 35px; font-size: 80%; color: grey;">Time to write a new blog!</div>
     </h3>
     <div id="bandBlog">
         <?php
         echo $this->element('Posts/list');
         ?>
     </div>
+
+    <h3>
+        <a href="#">Manage Your News</a>
+        <div style="margin-left: 35px; font-size: 80%; color: grey;">Spread the words</div>
+    </h3>
+    <div id="bandNews">
+        <?php
+        echo $this->element('News/list');
+        ?>
+    </div>
+
 
 </div>

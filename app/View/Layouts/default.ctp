@@ -37,7 +37,7 @@
     </script>
 </head>
 <body style="height: 100%;">
-    <div style="width: 1000px;margin-left: auto;
+    <div style="width: 1000px; margin-left: auto;
          margin-right: auto;">
          <?php echo $this->element('security/credentials'); ?>
     </div>
@@ -49,7 +49,6 @@
              ?>
         </div>
     </div>
-
     <div style="width:550px;  margin-top: -30px; margin-left: auto; margin-right: auto;">                
         <?php
         echo $this->Html->image(
@@ -108,14 +107,14 @@
         ?>
     </div>
     <div style="display: table; width: 1000px;margin-left: auto;
-         margin-right: auto; margin-top:100px;" id="siteContentArea">
+         margin-right: auto; margin-top:75px;" id="siteContentArea">
         <div style="display: table-row;">
             <div id="siteContentArea" style="display: table-cell; width: 700px;">
                 <?php
                 echo $content_for_layout;
                 ?>
             </div>
-            <?php
+<!--            <?php
             if ($this->here != $this->Html->url("/")) :
                 ?>
 
@@ -125,6 +124,7 @@
                     ?>
                 </div>
             <?php endif ?>
+-->
         </div>
     </div>
 
