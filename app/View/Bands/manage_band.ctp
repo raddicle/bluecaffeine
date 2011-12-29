@@ -119,6 +119,21 @@
         });
 
 
+        $( "#newBandDialog:ui-dialog" ).dialog( "destroy" );
+        $( "#newBandDialog" ).dialog({
+            autoOpen: false,
+            height: 420,
+            width: 500,
+            modal: true,
+            close: function() {
+            }
+        });
+        $( "#newBand" )
+        .button()
+        .click(function() {
+            $( "#newBandDialog" ).dialog( "open" );
+        });
+
 
         $( "#emailWebMasterDialog:ui-dialog" ).dialog( "destroy" );
         $( "#emailWebMasterDialog" ).dialog({
@@ -163,6 +178,10 @@
     <?php echo $this->element('Bands/member'); ?>
 </div>
 
+<div id="newBandDialog" title="Create New Band">
+    <?php echo $this->element('Bands/newband'); ?>
+</div>
+
 <!-- Email Web master Dialog-->
 <div id="emailWebMasterDialog" title="To Bluecaffeine Webmaster">
     <div id="emailwebmasterContent">
@@ -198,7 +217,6 @@
                 <dt>Genre</dt>
                 <dd><?php echo $band['Band']['genre']; ?></dd>
                 <dt>About Us</>
-
                 <dd><?php echo $band['Band']['aboutBand']; ?></dd>
             </dl>
         </div>
@@ -211,12 +229,15 @@
     <div style="text-align: center;">
         <button id="accountSetting" class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all" style="margin: 3px; width: 250px">
             <span class="ui-button-text">Account Setting</span>
-        </button>   
-
+        </button>
+        <button id="newBand" class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all" style="margin: 3px; width: 250px">
+            <span class="ui-button-text">Create New Band</span>
+        </button>
         <button id="emailWebMaster" class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all" style="margin: 3px; width: 250px">
             <span id="contactWebMaster" class="ui-button-text">Message to webmaster</span>
         </button>   		
     </div>
+
     <h3>
         <a href="#">Upload Songs</a>
         <div style="margin-left: 35px; font-size: 80%;color: grey;">Upload music and write about it!</div>
@@ -234,6 +255,8 @@
             ?>
         </div>
     </div>
+
+
     <h3>
         <a href="#">Upload Videos</a>
         <div style="margin-left: 35px; font-size: 80%; color: grey;">Upload Videos</div>
@@ -251,6 +274,8 @@
             ?>
         </div>
     </div>
+
+
     <h3>
         <a href="#">Manage Your Blogs</a>
         <div style="margin-left: 35px; font-size: 80%; color: grey;">Time to write a new blog!</div>
@@ -260,6 +285,7 @@
         echo $this->element('Posts/list');
         ?>
     </div>
+
 
     <h3>
         <a href="#">Manage Your News</a>

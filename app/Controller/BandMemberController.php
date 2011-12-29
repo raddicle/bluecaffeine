@@ -9,7 +9,7 @@ class BandMemberController extends AppController {
 
     var $name = "BandMember";
     var $helpers = array('Html', 'Form', 'Js');
-    var $components = array('RequestHandler');
+    var $components = array('RequestHandler', 'Email');
 
     function addMember() {
 
@@ -29,9 +29,25 @@ class BandMemberController extends AppController {
             $user['User']['password'] = 'test';
             $user['User']['role'] = 'band';
             $user['User']['status'] = 2;
-            
+
+            $token = substr(md5(uniqid(rand(), 1)), 0, 10);
+            $user['User']['verificationCode'] = $token;
             $user = $this->User->save($user);
-            $bandMember['BandMember']['user_id'] =  $user['User']['id'];
+
+            if ($user) {
+	                        $user['User']['status'] = 1;
+                $this->set('resetUser', $user);
+                $this->Email->to = $this->data['User']['username'];;
+                $this->Email->subject = 'Bluecaffeine.com New User';
+                $this->Email->smtpOptions = Configure::read('emailOptions');
+                $this->Email->delivery = 'smtp';
+                $this->Email->template = 'reset_password';
+                $this->Email->sendAs = 'html';
+                $this->Email->from = 'rilangotest@gmail.com';
+                $this->Email->send();
+
+                $bandMember['BandMember']['user_id'] =  $user['User']['id'];
+            }
         }
         if ($this->BandMember->save($bandMember)) {
             $this->loadModel('Band');

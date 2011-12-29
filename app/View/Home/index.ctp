@@ -8,7 +8,11 @@
         color: white;
     }
 </style>
-
+<script>
+    $(function() {
+        $( "#tabs" ).tabs();
+    });
+</script>
 <div style="display: table; text-align: center; width: 100%;">
     <div style="display: table-cell; padding-right: 20px; width: 200px;">
         <div class="homeTitle">artists</div>
@@ -34,41 +38,54 @@
         <div class="description">Upload and share your videos – anything (music) goes!</div>
     </div>
 </div>
-
-<div style="display: table; text-align: center; width: 100%; margin-top: 20px; ">
-    <div style="display: table-cell; width: 200px; padding: 6px; vertical-align: top; font-weight: bold;">
-        <div class="ribbon" style="width: 100%; padding: 6px;">
-            back to home
+<table class="transparent" cellspacing="6px" style="margin-top: 24px;">
+    <tr>
+        <td style="width: 185px; color: white; text-align: center;">
             <div>
                 <?php
                 echo $this->Html->image('home/home_small.jpg'
-                        , array('url' => '/', 'class' => 'imageBorder', 'style' => 'width: 100%;'));
+                        , array('url' => '/', 'class' => 'imageBorder', 'style' => 'width: 182px; height: 182px'));
                 ?>
             </div>
+            back to home
 
-            <div>
+            <div style="margin-top: 24px;">
                 <?php
                 echo $this->Html->image('home/getFound.png'
-                        , array('class' => 'imageBorder', 'style' => 'width: 100%;'));
+                        , array('class' => 'imageBorder', 'style' => 'width: 182px; height: 182px;  margin-bottom: 6px;'));
                 ?>
+                Got the right sound? Get Found!
             </div>
-        </div>
-    </div>
-    <div style="display: table-cell;">
-        <div style="font-weight: bold; width: 95%; padding: 6px 0 6px 0; margin: 6px;" class="ribbon">
-            featured
-            <?php
-            echo $this->element('featuredBand');
-            ?>
-        </div>
-    </div>
-    <div style="padding: 6px; display: table-cell; width: 300px; vertical-align: top;">
-        <div style="width: 100%;">
-            <div class="ribbon" style="width:100%; padding: 6px;">
+
+        </td>
+        <td style="width: 400px;">
+            <div style="font-weight: bold; text-align: center; height: 406px;" class="ribbon">
+                featured Band
                 <?php
-                echo $this->element('blog');
+                echo $this->element('featuredBand');
                 ?>
             </div>
-        </div>
-    </div>
-</div>
+        </td>
+        <td>
+            <div id="tabs" style="height: 400px;">
+                <ul>
+                    <li><a href="#tabs-1">news</a></li>
+                    <li><a href="#tabs-2">blog</a></li>
+                    <li><a href="#tabs-3">friends</a></li>
+                </ul>
+                <div id="tabs-1">
+                    <?php
+                    echo $this->element('news');
+                    ?>
+                </div>
+                <div id="tabs-2">
+                    <?php
+                    echo $this->element('blog');
+                    ?>
+                </div>
+                <div id="tabs-3">
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>

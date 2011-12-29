@@ -21,16 +21,14 @@ class BandassetsController extends AppController {
             $this->log('Asset could not be saved.', 'error');
             $this->set('uploadError', 'Unexpected error occured probabily because the uploaded file is too big.');
         } else {
-            if ($this->data['Bandasset']['image']["tmp_name"] =="") {
+            if ($this->data['Bandasset']['link'] == "" && $this->data['Bandasset']['image']["tmp_name"] == "") {
                 $this->log('Asset could not be saved.', 'error');
                 $this->set('uploadError', 'Unexpected error occured probabily because the uploaded file is too big.');
             } else {
                 $value = $this->Bandasset->save($this->data);
-
+                $this->set('mediaType', $value['Bandasset']['media_type']);
                 if ($value) {
-                    $this->loadModel('BandassetLink');
-                    $this->request->data['BandassetLink']['asset_id'] = $value['Bandasset']['id'];
-                    if ($this->BandassetLink->save($this->data)) {
+                    if ($this->data['Bandasset']['image']["tmp_name"] != "") {
                         $filename = $this->data['Bandasset']['image']['name'];
                         $fileExt = substr($filename, strrpos($filename, ".") + 1);
 
@@ -39,11 +37,10 @@ class BandassetsController extends AppController {
                         move_uploaded_file($this->data['Bandasset']['image']["tmp_name"]
                             , $target);
 
-                        $this->set('mediaType', $value['Bandasset']['media_type']);
+                        
                         chmod($target, 0777);
-                    } else {
-                        $this->log('Error while saving asset detail into database.', 'error');
                     }
+
                 } else {
                     $this->log('Asset could not be saved.', 'error');
                 }

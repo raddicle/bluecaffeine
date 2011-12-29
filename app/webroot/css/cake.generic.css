@@ -101,13 +101,14 @@ fieldset {
 
 /** Tables **/
 table {
+    background: transparent;
     border-right:0;
     clear: both;
     margin-bottom: 10px;
     width: 100%;
-    background: #f0f9ff;
 }
 th {
+    background: transparent;
     border:0;
     color: #333;
     border-bottom:2px solid #555;
@@ -129,7 +130,7 @@ table tr td {
     padding: 0px;
     margin: 0px;
     color: #333;
-    background: #f0f9ff;
+    background: transparent;
     text-align: left;
     vertical-align: top;
 }
@@ -187,7 +188,7 @@ dd {
 }
 
 .imageBorder{
-    margin-bottom: 15px;
+    margin-bottom: 3px;
     display: inline-block;
     behavior: url(lib/pie/PIE.htc); 
     border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px;
@@ -386,3 +387,4 @@ dd {
     text-shadow:1px 1px #fff; 
     font-size: 12px;
 }
+

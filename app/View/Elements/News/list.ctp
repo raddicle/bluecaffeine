@@ -8,8 +8,8 @@
             data: 'newsurl=' + $('#BandNewsNewsurl').val(),
             success: function(response) {
 
-              $("#BandNewsTitle").val(response.BandNews.title);
-              $("#BandNewsDescription").val(response.BandNews.description);
+              $("#BandNewsTitle").val($.trim(response.BandNews.title));
+              $("#BandNewsDescription").val($.trim(response.BandNews.description));
             },
             error:function (XMLHttpRequest, textStatus, errorThrown) {
             }
@@ -50,12 +50,13 @@
         $.ajax({
             type: "post",
             dataType: 'json',
-            url: "<?php echo $this->Html->url('/', true); ?>BandNews/view/" + blogId,
+            url: "<?php echo $this->Html->url('/', true); ?>BandNews/view/" + newsId,
             data: data,
             success: function(response) {
-                $("#BandNewsId").val(response.Post.id)
-                $("#BandNewsTitle").val(response.Post.title)
-                $("#BandNewsDescription").val(response.Post.description)
+                $("#BandNewsNewsurl").val(response.BandNews.newsurl);
+                $("#BandNewsId").val(response.BandNews.id);
+                $("#BandNewsTitle").val(response.BandNews.title);
+                $("#BandNewsDescription").val(response.BandNews.description);
                 $( "#newsDialog" ).dialog( "open" );
             },
             error:function (XMLHttpRequest, textStatus, errorThrown) {
@@ -94,6 +95,7 @@
     
     
     function resetNewsForm() {
+        $("#BandNewsNewsurl").val('');
         $("#BandNewsId").val("")
         $("#BandNewsTitle").val("")
         $("#BandNewsDescription").val("")
@@ -104,8 +106,8 @@
         $( "#newsDialog:ui-dialog" ).dialog( "destroy" );
         $( "#newsDialog" ).dialog({
             autoOpen: false,
-            height: 600,
-            width: 800,
+            height: 400,
+            width: 600,
             modal: true,
             close: function() {
             }
@@ -137,7 +139,9 @@ $bandDetails = $this->Session->read('band');
     <?php foreach ($bandDetails['BandNews'] as $news): ?>
         <tr>
             <td>
-                <?php echo $news['title']; ?>
+                <?php echo $this->Html->link($news['title'], $news['newsurl']
+                        , array('class' => 'button', 'target' => '_blank'));
+                ?>
             </td>
             <td width="80px">
                 <?php

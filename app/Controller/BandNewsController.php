@@ -64,7 +64,7 @@ class BandNewsController extends AppController {
     function view($id = null) {
 
         $this->BandNews->recursive = 0;
-        $this->set('bandNews', $this->Post->findById($id));
+        $this->set('bandNews', $this->BandNews->findById($id));
         $this->render('edit', 'ajax');
     }
 

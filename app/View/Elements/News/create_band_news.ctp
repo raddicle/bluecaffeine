@@ -15,7 +15,7 @@ $bandDetails = $this->Session->read('band');
     ?>
     <div class="input text required"><label for="BandNewsDescription">News Content</label>
     <?php
-    echo $this->Form->textarea('description', array('style' => 'margin-bottom: 6px;', 'label'=>'News URL')  );
+    echo $this->Form->textarea('description', array('rows' => '6', 'style' => 'margin-bottom: 6px;', 'label'=>'News URL')  );
     echo $this->Form->input('band_id', array('type' => 'hidden'
         , 'value' => $bandDetails['Band']['id']));
     ?>

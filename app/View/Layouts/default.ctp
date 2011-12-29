@@ -37,13 +37,11 @@
     </script>
 </head>
 <body style="height: 100%;">
-    <div style="width: 1000px; margin-left: auto;
-         margin-right: auto;">
+    <div style="width: 1000px; margin-left: auto; margin-right: auto;">
          <?php echo $this->element('security/credentials'); ?>
     </div>
     <div id="bar">
-        <div id="container" style="width: 1000px; margin-left: auto;
-             margin-right: auto;">
+        <div id="container" style="width: 1000px; margin-left: auto; margin-right: auto;">
              <?php
              echo $this->Html->image('logo.png', array('url' => '/home', 'style' => 'width: 120px;'));
              ?>
@@ -65,33 +63,6 @@
             </li>
             <li style="width: 50px; height: 50px; text-align: right;">
                 <a href="#">FAN</a>
-                <ul id="help" style="left:-30px;">
-                    <li style="">
-                        <?php
-                        echo $this->Html->image(
-                            'menu/corner_inset_left.png', array('class' => 'corner_inset_left'));
-                        ?>
-                        <a href="#">Play Music</a>
-                        <?php
-                        echo $this->Html->image(
-                            'menu/corner_inset_right.png', array('class' => 'corner_inset_right'));
-                        ?>
-                    </li>
-                    <li><a href="#">Blogs</a></li>
-                    <li><a href="#">Forum</a></li>
-                    <li><a href="#">Setting</a></li>
-                    <li><a href="#">Review</a></li>
-                    <li class="last">
-                        <?php
-                        echo $this->Html->image(
-                            'menu/corner_blue_left.png', array('class' => 'corner_left'));
-                        echo $this->Html->image(
-                            'menu/dot_blue.png', array('class' => 'middle'));
-                        echo $this->Html->image(
-                            'menu/corner_blue_right.png', array('class' => 'corner_right'));
-                        ?> 
-                    </li>
-                </ul>
             </li>
             <li style="width: 80px; height: 50px; text-align: right;">
                 <a href="#">COMMUNITY</a>
@@ -107,7 +78,7 @@
         ?>
     </div>
     <div style="display: table; width: 1000px;margin-left: auto;
-         margin-right: auto; margin-top:75px;" id="siteContentArea">
+         margin-right: auto; margin-top:60px;" id="siteContentArea">
         <div style="display: table-row;">
             <div id="siteContentArea" style="display: table-cell; width: 700px;">
                 <?php
@@ -129,10 +100,10 @@
     </div>
 
 
-    <!--        <div>            
+<!--           <div>            
     <?php echo $this->element('sql_dump'); ?>    
-            </div>-->
-
+            </div>
+-->
     <script type="text/javascript" src="http://webplayer.yahooapis.com/player-beta.js">
     </script> 
 </body>

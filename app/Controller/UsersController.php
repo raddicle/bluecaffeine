@@ -222,7 +222,5 @@ class UsersController extends AppController {
     function forgot() {
         
     }
-
 }
-
 ?>

@@ -73,7 +73,7 @@ Configure::write('genre',array('Pop/Rock'=>'Pop/Rock', 'Metal'=>'Metal', 'Jazz'=
      , 'World/Fusion'=>'World/Fusion'));
  
  
- Configure::write('featuredBandId', '47');
+ Configure::write('featuredBandId', '16');
  
  
  

@@ -28,17 +28,18 @@ foreach ($band['Bandasset'] as $asset):
                 ?>
             </td>
         </tr>
+        
+        <script>
+            $(document).ready(function() {
+                try{
+                    YAHOO.MediaPlayer.addTracks(document.getElementById("songLink<?php echo $asset['id'] ?>"));
+                } catch(err) {
+                }
+            });
+        </script>
         <?php
     }
 endforeach;
 ?>
-<script>
-    $(document).ready(function() {
-        try{
-        YAHOO.MediaPlayer.addTracks(document.getElementById("songLink<?php echo $asset['id'] ?>"));
-        } catch(err) {
-        }
-    });
-</script>
 
 </table>

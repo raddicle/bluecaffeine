@@ -22,7 +22,7 @@ class AssetuploadHelper extends AppHelper {
             $this->Form->input('image', array("type" => "file", 'label' => $dialogTitle, 'id'=>'assetFile'.$dialogId, 'class'=>'required')) .
             '<div id="assetLinks">' .
             '<div class="input file">' .
-            $this->Form->input('BandassetLink.link', array('div' => false)) .
+            $this->Form->input('link', array('div' => false, 'id'=>'assetLink'.$dialogId)) .
             '</div>' .
             '</div>' .
             $this->Form->input('Upload'
@@ -34,17 +34,20 @@ class AssetuploadHelper extends AppHelper {
          <script>
                 $(document).ready(function() {
                     document.getElementById("__form' . $dialogId . '").onsubmit=function() {
-                        if ($("#assetName'.$dialogId.'").val().trim() == "" ||  $("#assetFile'.$dialogId.'").val().trim() == ""){
-                            alert("Song name and file are madatory. Please enter before saving.");
+                        if ($("#assetName'.$dialogId.'").val().trim() == ""){
+                            alert("Song name is madatory. Please enter before saving.");
                             return false;
-                        } else {
+                        } else if( $("#assetFile'.$dialogId.'").val().trim() == "" && $("#assetLink'.$dialogId.'").val().trim() == "" ) {
+                            alert("Song name or URL is madatory. Please enter before saving.");
+                            return false;
+                        } else if( $("#assetFile'.$dialogId.'").val().trim() != "" ){
                             var namePart = $("#assetFile'.$dialogId.'").val().trim().split(".");
                             var ext = namePart[namePart.length - 1];
                             if (!(ext  == "mp3" || ext  == "mp4")) {
                                 alert("Only MP3 or MP4 file are allowed.");
                                 return false;
                             } else {
-                            $("#fileType'.$dialogId.'").val(ext);
+                                $("#fileType'.$dialogId.'").val(ext);
                             
                             }
                         }

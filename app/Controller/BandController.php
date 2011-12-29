@@ -60,6 +60,27 @@ class BandController extends AppController {
         
     }
 
+
+    function newBand(){
+
+        $this->autoRender = false;
+        $bandDetails = $this->Band->save($this->data);
+            if ($bandDetails) {
+
+            $this->loadModel("BandMember");
+            $bandMember = $this->BandMember->create();
+            $userDetails = $this->Session->read('user');
+            
+            $bandMember['BandMember']['band_id'] = $bandDetails['Band']['id'];
+            $bandMember['BandMember']['user_id'] = $userDetails['User']['id'];
+            $bandMember['BandMember']['role'] = 'Founder';
+            $this->BandMember->save($bandMember);
+            
+            return json_encode($bandDetails['Band']['id']);
+        } 
+    }
+
+
     function save() {
 
         $this->Band->saveAll($this->data);
