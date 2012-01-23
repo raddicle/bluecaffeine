@@ -9,9 +9,7 @@
             close: function() {
             }
         });
-    });
-
-    $(function() {
+    
         $( "#songDialog:ui-dialog" ).dialog( "destroy" );
         $( "#songDialog" ).dialog({
             autoOpen: false,
@@ -66,10 +64,7 @@
             clearStyle: true,
             autoHeight: false
         });
-    });
-
-
-    $(function() {
+    
         $( "#uploadImageDialog:ui-dialog" ).dialog( "destroy" );
 
         $( "#uploadImageDialog" ).dialog({

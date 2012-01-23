@@ -9,7 +9,8 @@ class User extends AppModel {
                 'rule' => array('notEmpty'),
                 'message' => 'Password must be entered.',
                 'allowEmpty' => false,
-                'required' => true
+                'required' => true,
+                 'on' => 'create'
             ),
             'minLength' => array(
                 'rule' => array('minLength', 4),
@@ -21,7 +22,7 @@ class User extends AppModel {
                 'rule' => array('notEmpty'),
                 'message' => 'Password and Password Confirmation must be supplied when setting the password',
                 'allowEmpty' => false,
-                'on' => 'create',
+                'on' => 'create'
             )
         ),
         'first_name' => array(
@@ -29,7 +30,7 @@ class User extends AppModel {
                 'rule' => array('notEmpty'),
                 'message' => 'First name must be entered.',
                 'allowEmpty' => false,
-                'on' => 'create',
+                'on' => 'create'
             ),
         ),
         'last_name' => array(
@@ -37,7 +38,7 @@ class User extends AppModel {
                 'rule' => array('notEmpty'),
                 'message' => 'Last name must be entered.',
                 'allowEmpty' => false,
-                'on' => 'create',
+                'on' => 'create'
             ),
         ),
         'username' => array(
@@ -45,7 +46,7 @@ class User extends AppModel {
                 'rule' => array('notEmpty'),
                 'message' => 'User Name must be entered.',
                 'allowEmpty' => false,
-                'on' => 'create',
+                'on' => 'create'
             ),
             'email' => array(
                 'rule' => 'email',

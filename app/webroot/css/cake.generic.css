@@ -24,7 +24,7 @@ select, option{
 }
 
 a {
-    color: #003d4c;
+    color: white;
     text-decoration: underline;
     font-weight: bold;
     font-size: 90%;
@@ -32,71 +32,81 @@ a {
 
 a:hover {
     color: #aaa;
+    cursor: pointer;
     text-decoration:none;
 }
 
 a img {
     border:none;
-}
-
-botton, span{
-        color: #333;
-}
-
-textarea,
-input {
-    width:92%;
-    border:1px solid #899caa;
-    border-radius:2px;
-    -moz-border-radius:2px;
-    color:#3a454d;
-    padding:8px 8px;
-    box-shadow:inset 0px 1px 3px #bbb;
-    -webkit-box-shadow:inset 0px 1px 3px #bbb;
-    -moz-box-shadow:inset 0px 1px 3px #bbb;
-    font-size:12px;
+    outline: none;
 }
 
 
+/* form style */
 form {
-    border:1px solid #899caa;
-    border-radius:3px;
-    -moz-border-radius:3px;
-    margin-top:-1px;
-    background:#d2e0ea;
-    padding:6px;
+    padding:5px 15px 5px 30px; 
+    color:#eee;
+    margin:0 auto;
+    position:relative;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;	
+} 
+
+/* input field */
+form input {
+    border:1px solid #AAA;
+    padding:5px;
+    font-size:12px;
+    color: #444;
+    /* CSS3 spicing */
+    border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px;	
+    width: 92%;
 }
 
-form .error,
-form .error-message {
-    color: #9E2424;
+/** Forms **/
+form .required {
     font-weight: bold;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -ms-box-shadow: none;
-    -o-box-shadow: none;
-    box-shadow: none;
-    text-shadow: none;
 }
 
-label {
-    color: #333;
-    display:block;
-    float:none;
-    margin:6px 0 0 0;
-    font-size: 12px;
+form .required label:after {
+    color: #e32;
+    content: '*';
+    display:inline;
 }
 
-fieldset {
-    float:none;
-    display:block;
-    border:0;
-    padding:0;
-    background:#fff;
-    border-radius:3px;
-    -moz-border-radius:3px;
-    padding:5px 5px;
-    margin:0;
+/* typography */
+form h3 { 
+    color:#eee; 
+    margin-top:0px;
+}
+
+form div { 
+    font-size:12px; 
+    padding: 3px 0 3px 0;
+}
+
+form div label{
+    display: block;
+    color: #444;
+}
+
+.container {
+    margin-bottom: 15px;
+    display: inline-block;
+    background: white;
+    behavior: url(lib/pie/PIE.htc); 
+    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+    border: 1px solid #7d8893;
+}
+
+.ui-button { margin-left: -1px; }
+.ui-button-icon-only .ui-button-text { padding: 0.35em; } 
+.ui-autocomplete-input { margin: 0; padding: 0.48em 0 0.47em 0.45em; }
+
+/** TODO to be reviewed.*/
+
+.ui-button-text {
+    color: #444;
 }
 
 /** Tables **/
@@ -146,22 +156,6 @@ table td.actions a {
     padding:2px 5px;
 }
 
-/** Forms **/
-form .required {
-    font-weight: bold;
-}
-form .required label:after {
-    color: #e32;
-    content: '*';
-    display:inline;
-}
-form div.submit {
-    border: 0;
-    clear: both;
-    margin-top: 10px;
-}
-
-
 /** Scaffold View **/
 dl {
     background: white;
@@ -194,13 +188,6 @@ dd {
     border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px;
 }
 
-.ribbon {
-    margin-bottom: 15px;
-    display: inline-block;
-    behavior: url(lib/pie/PIE.htc); 
-    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
-    border: 1px solid #7d8893;
-}
 
 
 /* menu */

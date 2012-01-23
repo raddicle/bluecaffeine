@@ -1,7 +1,5 @@
 <?php
 
-//App::import('Vendor', 'facebook/facebook');
-
 class UsersController extends AppController {
 
     var $name = 'Users';
@@ -18,32 +16,31 @@ class UsersController extends AppController {
         $this->autoRender = false;
         if (!empty($this->data)) {
 
-            $username = $this->Auth->data['User']['username'];
-            $find_by_email = $this->User->find('first', array(
+            $currentUser = $this->User->find('first', array(
                 'conditions' => array('username' => $this->data['User']['username'])
-                    )
+                )
             );
 
-            if ($find_by_email['User']['status'] != 0) {
+            $response = $this->User->create();
+            $response['User']['returnCode'] = '1';
 
-                $response = $this->User->create();
-                $response['User']['returnCode'] = '1';
+            if ($currentUser['User']['status'] != 0) {
+                
                 $response['User']['errorMsg'] = 'Account is inactive. This  may be because you requested reset password.';
                 return json_encode($response);
-            } else if (!empty($find_by_email)
-                    && $find_by_email['User']['password'] == $this->data['User']['password']) {
+            } else if (!empty($currentUser)
+                    && $currentUser['User']['password'] == $this->data['User']['password']) {
 
                 $this->Auth->login($this->data);
-                $this->Session->write('user', $find_by_email);
-
-                $response = $this->User->create();
+                $this->Session->write('user', $currentUser);
+                
                 $response['User']['returnCode'] = '0';
                 return json_encode($response);
             } else {
 
                 $this->Session->setFlash('Incorrect User/Password.');
                 $response = $this->User->create();
-                $response['User']['returnCode'] = '1';
+                
                 $response['User']['errorMsg'] = 'Incorrect User/Password.';
                 return json_encode($response);
             }
@@ -54,7 +51,7 @@ class UsersController extends AppController {
 
                 $existUser = $this->User->find('first', array(
                     'conditions' => array('username' => $facebookUser['email'])
-                        )
+                    )
                 );
                 if (empty($existUser)) {
                     $userDetails = $this->User->create();
@@ -78,6 +75,25 @@ class UsersController extends AppController {
         }
     }
 
+    /*
+     * Sends an email to the salesSupport team, requesting to change role to artist.
+     */
+    function registerAsArtist() {
+        
+        $emailOption = Configure::read('emailOptions');
+        
+        $this->Email->to = Configure::read('salesSupportEmailId');
+        $this->Email->subject = 'Bluecaffeine.com Reset Password';
+        $this->Email->smtpOptions = $emailOption;
+        $this->Email->delivery = 'smtp';
+        $this->Email->template = 'artist_request';
+        $this->Email->sendAs = 'html';
+        $this->Email->from = $emailOption['username'];
+        $this->Email->send();
+        
+        $this->autoRender = false;
+    }
+    
     function emailPasswdLink() {
         if (!empty($this->data)) {
             if ($this->data['User']['username'] != '') {
@@ -154,7 +170,6 @@ class UsersController extends AppController {
 
     function logout() {
 
-        $test = $this->Auth->logout();
         $this->Session->destroy();
         $this->render("/Pages/home");
     }
@@ -205,10 +220,10 @@ class UsersController extends AppController {
             if (empty($existUser)) {
                 $this->set('emailverificationStatus', 'Invalid Account activation url.');
             } else {
-                $userDetails['User']['status'] = '0';
-                $userDetails['User']['verificationCode'] = '';
-                $this->User->save($userDetails);
-                $this->Auth->login($userDetails);
+                $existUser['User']['status'] = '0';
+                $existUser['User']['verificationCode'] = '';
+                $this->User->save($existUser);
+                $this->Auth->login($existUser);
                 
                 return $this->redirect('/');
             }
@@ -217,6 +232,21 @@ class UsersController extends AppController {
 
     function users() {
         
+    }
+    
+    function userprofile(){
+        
+        if ($this->data) {
+            
+            $userDetail = $this->User->save($this->data);
+
+            if ($userDetail) {
+                $this->Session->write('user', $userDetail);
+                $this->Session->setFlash('Saved.');
+            } else {
+                $this->Session->setFlash('Error while saving profile information');
+            }
+        }
     }
 
     function forgot() {

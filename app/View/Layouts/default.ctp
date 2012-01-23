@@ -19,6 +19,7 @@
     print $this->Html->script('jquery-jeditable');
     print $this->Html->script('ckeditor/ckeditor');
     print $this->Html->script('ckeditor/adapters/jquery');
+    print $this->Html->script('common');
     ?>
     <script>
         function loadPage(actionUrl) {
@@ -33,33 +34,35 @@
                 }
             });
         }
-        
     </script>
 </head>
 <body style="height: 100%;">
     <div style="width: 1000px; margin-left: auto; margin-right: auto;">
-         <?php echo $this->element('security/credentials'); ?>
+        <?php echo $this->element('security/credentials'); ?>
     </div>
     <div id="bar">
         <div id="container" style="width: 1000px; margin-left: auto; margin-right: auto;">
-             <?php
-             echo $this->Html->image('logo.png', array('url' => '/home', 'style' => 'width: 120px;'));
-             ?>
+            <?php
+            echo $this->Html->image('logo.png', array('url' => '/home', 'style' => 'width: 120px;'));
+            ?>
         </div>
     </div>
     <div style="width:550px;  margin-top: -30px; margin-left: auto; margin-right: auto;">                
         <?php
         echo $this->Html->image(
-            'menu/menu_left_blue.png', array('style' => 'float:left;'));
+                'menu/menu_left_blue.png', array('style' => 'float:left;'));
         ?>
         <ul id="menu">
             <li style="width: 80px; height: 50px; text-align: right;">
-                <?php $userDetails = $this->Session->read('user'); ?>
-                <?php if ($userDetails['User']['role'] == 'band'): ?>
-                    <a href="#" onclick="loadPage('<?php echo $this->Html->url(array('controller' => 'band', 'action' => 'manageBand', $userDetails['User']['id'])); ?>')">ARTIST</a>
-                <?php else: ?>
-                    <a href="#" onclick="loadPage('<?php echo $this->Html->url(array('controller' => 'band', 'action' => 'index', $userDetails['User']['id'])); ?>')">ARTIST</a>
-                <?php endif ?>
+                <?php
+                $userDetails = $this->Session->read('user');
+                if ($userDetails['User']['role'] == 'artist'):
+                    echo $this->Html->link('ARTIST', array('controller' => 'Users', 'action' => 'userprofile'));
+                else:
+                    echo $this->Html->link('ARTIST', array('controller' => 'band', 'action' => 'index'
+                        , $userDetails['User']['id']));
+                endif
+                ?>
             </li>
             <li style="width: 50px; height: 50px; text-align: right;">
                 <a href="#">FAN</a>
@@ -72,40 +75,27 @@
             </li>
 
         </ul>
-        <?php
-        echo $this->Html->image(
-            'menu/menu_right_blue.png', array('style' => 'float:left'));
-        ?>
+<?php
+echo $this->Html->image(
+        'menu/menu_right_blue.png', array('style' => 'float:left'));
+?>
     </div>
-    <div style="display: table; width: 1000px;margin-left: auto;
-         margin-right: auto; margin-top:60px;" id="siteContentArea">
-        <div style="display: table-row;">
-            <div id="siteContentArea" style="display: table-cell; width: 700px;">
-                <?php
-                echo $content_for_layout;
-                ?>
-            </div>
-<!--            <?php
-            if ($this->here != $this->Html->url("/")) :
-                ?>
-
-                <div style="display: table-cell; width: 200px;">
-                    <?php 
-                    echo $this->element('adv');
-                    ?>
-                </div>
-            <?php endif ?>
--->
+    <div style="width: 1000px; margin-left: auto; margin-right: auto; margin-top:60px;">
+        <div id="siteContentArea" style="display: table-cell; width: 1000px;">
+            <?php echo $content_for_layout; ?>
         </div>
+        <?php if (!isset($showAdd)) : ?>
+            <div style="display: table-cell; width: 200px;">
+    <?php echo $this->element('adv'); ?>
+            </div>
+        <?php endif ?>
     </div>
 
+    <div>            
+<?php echo $this->element('sql_dump'); ?>    
+    </div>
 
-<!--           <div>            
-    <?php echo $this->element('sql_dump'); ?>    
-            </div>
--->
-    <script type="text/javascript" src="http://webplayer.yahooapis.com/player-beta.js">
-    </script> 
+    <script type="text/javascript" src="http://webplayer.yahooapis.com/player-beta.js"> </script> 
 </body>
 <?php echo $this->Facebook->init(); ?>
 </html>

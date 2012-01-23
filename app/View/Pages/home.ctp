@@ -22,6 +22,7 @@
 
 <div class="backImage" style="text-align: center;">
     <?php
+    $this->set('showAdd', false);
     echo $this->Html->image('home/home.jpg', array('url' => '/home', 'style' => ' margin-top: 10px'));
     ?>
 </div>

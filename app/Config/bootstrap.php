@@ -71,12 +71,13 @@ Configure::write('genre',array('Pop/Rock'=>'Pop/Rock', 'Metal'=>'Metal', 'Jazz'=
      , 'Electronic/Dance'=>'Electronic/Dance', 'Carnatic'=>'Carnatic'
      , 'Hindustani/Ghazals'=>'Hindustani/Ghazals', 'Religious/Spiritual'=>'Religious/Spiritual'
      , 'World/Fusion'=>'World/Fusion'));
- 
- 
- Configure::write('featuredBandId', '16');
- 
- 
- 
+
+Configure::write('featuredBandId', '16');
+
+Configure::write('salesSupportEmailId', 'rilango@gmail.com');
+
+Configure::write('webMasterEmailId', 'rilango@gmail.com');
+
 Configure::write('emailOptions', array('port' => '465'
     , 'timeout' => '30'
     , 'host' => 'ssl://smtp.gmail.com'
