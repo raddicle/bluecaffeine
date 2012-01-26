@@ -53,7 +53,7 @@ class CropimageHelper extends Helper {
         $w =          $this->Form->hidden('w', array("value" => "", "id"=>"w"));
         $h =          $this->Form->hidden('h', array("value" => "", "id"=>"h"));
         $imgP =       $this->Form->hidden('imagePath', array("value" => $imagePath));
-        $imgTum =     $this->Html->image($imagePath, array('style'=>'float: left; margin-right: 10px;', 'id'=>'thumbnail', 'alt'=>'Create Thumbnail'));
+        $imgTum =     $this->Html->image($imagePath, array('style'=>'float: left; margin-right: 0px;', 'id'=>'thumbnail', 'alt'=>'Create Thumbnail'));
         $imgTumPrev = $this->Html->image($imagePath, array('style'=>'position: relative;', 'id'=>'thumbnail', 'alt'=>'Thumbnail Preview'));
         return $this->output("$imgTum
             <br style=\"clear:both;\"/>$x1 $y1 $x2 $y2 $w $h $imgP");

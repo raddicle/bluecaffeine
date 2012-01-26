@@ -94,6 +94,7 @@ class BandController extends AppController {
     /**
      * Crops the image to fit the users preference.
      */
+    
     function cropImage() {
 
         $imageName = $this->data['Band']['imagePath'];

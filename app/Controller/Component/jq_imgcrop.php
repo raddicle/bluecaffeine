@@ -26,7 +26,7 @@ class JqImgcropComponent extends Object {
         $upload_dir = WWW_ROOT.str_replace("/", DS, $uploadTo);
         $upload_path = $upload_dir.DS;
         $max_file = "34457280";                         // Approx 30MB
-        $max_width = 800;
+        $max_width = 500;
 
         $userfile_name = $uploadedInfo['name'];
         $userfile_tmp =  $uploadedInfo["tmp_name"];

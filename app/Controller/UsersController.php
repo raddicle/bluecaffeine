@@ -3,8 +3,8 @@
 class UsersController extends AppController {
 
     var $name = 'Users';
-    var $helpers = array('Html', 'Form', 'Session', 'Facebook.Facebook');
-    var $components = array('Session', 'Auth', 'Facebook.Connect', 'Email');
+    var $helpers = array('Html', 'Form', 'Session', 'Facebook.Facebook', 'Js', 'Cropimage');
+    var $components = array('Session', 'Auth', 'Facebook.Connect', 'Email', 'JqImgcrop');
 
     function beforeFilter() {
         parent::beforeFilter();
@@ -249,6 +249,36 @@ class UsersController extends AppController {
         }
     }
 
+    function editProfileImage(){
+        return $this->render('editProfileImage', 'ajax');
+    }
+    
+    function showUploadForm() {
+        if (!empty($this->data)) {
+            $user = $this->Session->read('user');
+            $uploaded = $this->JqImgcrop->uploadImage($this->data['User']['image']
+                , 'content/band/upload', 'user_' . $user['User']['id']);
+            $this->set('uploaded', $uploaded);
+            $this->render('showUploadForm', 'ajax');
+        }
+    }
+    
+    
+    function cropImage() {
+
+        $imageName = $this->data['User']['imagePath'];
+        $imageName = substr($imageName, strrpos($imageName, DS));
+
+        $this->JqImgcrop->cropImage(400, $this->data['User']['x1']
+            , $this->data['User']['y1'], $this->data['User']['x2']
+            , $this->data['User']['y2'], $this->data['User']['w']
+            , $this->data['User']['h'], 'content/band/thumbnail/' . $imageName
+            , 'content/band/upload/' . $imageName);
+
+        $this->set('uploadedImage', '/content/band/thumbnail/' . $imageName);
+        $this->render('imageUpdated', 'ajax');
+    }
+    
     function forgot() {
         
     }

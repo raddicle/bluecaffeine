@@ -37,9 +37,13 @@
 <?php $user = $this->Session->read('user');
     $this->set('showAdd', false);
     
-    if ($this->Session->read('Auth.User') && $user['User']['role'] == 'fan') : ?>
-    <a id="registerAsArtist" style="float:right; margin-top: -25px">Register as artist</a>
-<?php endif ?>
+    if ($this->Session->read('Auth.User') && $user['User']['role'] == 'fan') {
+        echo $this->Html->link('Register as artist', array(), array('id'=>'registerAsArtist'
+            , 'style'=>'float:right; margin-top: -25px'));
+    } else {
+        echo $this->Html->link('Create new band', array(), array('id'=>'createBand'
+            , 'style'=>'float:right; margin-top: -25px'));
+    }?>
 
 <div style="display: table; text-align: center; width: 100%;">
     <div style="display: table-cell; padding-right: 20px; width: 200px;">
