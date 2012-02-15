@@ -58,7 +58,7 @@
         <tr>
             <td style="width: 400px; text-align: center; vertical-align: middle;">
             <?php 
-            searchForFile("temp*");
+            
 
             function searchForFile($fileToSearchFor){
                 $numberOfFiles = count(glob($fileToSearchFor));

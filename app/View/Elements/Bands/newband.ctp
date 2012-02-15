@@ -7,7 +7,7 @@
             $("#newBandForm").ajaxSubmit({
                 success: function(responseText, responseCode) {
 
-                    url = '<?php echo $this->Html->url(array('controller' => 'band', 'action' => 'manageBand'));  ?>/' + responseText;
+                    url = '<?php echo $this->Html->url(array('controller' => 'band', 'action' => 'manageBand'));  ?>/' + responseText.replace("\"", "");
                     document.location = url;
                     $( "#newBandDialog" ).dialog( "close" );
                 },

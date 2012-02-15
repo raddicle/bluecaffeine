@@ -34,6 +34,19 @@ class UsersController extends AppController {
                 $this->Auth->login($this->data);
                 $this->Session->write('user', $currentUser);
                 
+                if ($currentUser['User']['role'] == "artist") {
+                    $this->loadModel('Band');
+                    $userBand = $this->Band->find('all', array(
+                        'joins' => array(array(
+                            'table' => 'band_members',
+                            'alias' => 'bandMember',
+                            'type' => 'inner',
+                            'conditions'=> 'bandMember.band_id= Band.id')
+                    )));
+                    $this->Session->write('bands', $userBand);
+                    
+                }
+                
                 $response['User']['returnCode'] = '0';
                 return json_encode($response);
             } else {
@@ -75,15 +88,21 @@ class UsersController extends AppController {
         }
     }
 
+    
     /*
      * Sends an email to the salesSupport team, requesting to change role to artist.
      */
     function registerAsArtist() {
         
+        //TODO : Temp code for seamless registration as artist
+        $currentUser = $this->Session->read('user');
+        $currentUser ['User']['role'] = 'artist';
+        $this->User->save($currentUser);
+        
         $emailOption = Configure::read('emailOptions');
         
         $this->Email->to = Configure::read('salesSupportEmailId');
-        $this->Email->subject = 'Bluecaffeine.com Reset Password';
+        $this->Email->subject = 'Bluecaffeine.com Artist Request received';
         $this->Email->smtpOptions = $emailOption;
         $this->Email->delivery = 'smtp';
         $this->Email->template = 'artist_request';

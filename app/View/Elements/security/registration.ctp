@@ -1,16 +1,3 @@
-<style>
-    form div {
-        margin: 0 0 0 0;
-        padding: 0px;
-    }
-
-    form fieldset label {
-        float: left;
-        padding: 0;
-        text-align: left;
-    }
-</style>
-
 <script>
     $(function() {
         $('#registerSubmitButton').die('click')

@@ -1,15 +1,3 @@
-<style>
-    form div {
-        margin: 0 0 0 0;
-        padding: 0px;
-    }
-    
-    form fieldset label {
-        float: left;
-        padding: 0;
-        text-align: left;
-    }
-</style>
 <script>
     $(function() {
         $('#loginSubmitButton').die('click')
@@ -41,8 +29,8 @@ echo $this->Form->create('User', array('id' => 'loginForm'
     echo $this->Form->input('username', array('label' => 'E-Mail'));
     echo $this->Form->input('password');
     ?>
-    <label for="checkbox" style="display: inline; margin-top: 6px;">
-        <input type="checkbox" id="remember_me" style="margin-top: 6px; width: 20px; display: inline;"/>Remember me
+    <label for="checkbox" style="margin-top: 10px; color: #444444;">
+        <input type="checkbox" id="remember_me" style="vertical-align: bottom; margin-right: 6px;"/>Remember me
     </label>
     <input id="loginSubmitButton" value="Login" type="button" style="width:60px; float: right; margin-top: 6px;"/>
 
@@ -50,6 +38,6 @@ echo $this->Form->create('User', array('id' => 'loginForm'
 </fieldset>
 
 <?php
-echo $this->Html->link('Forgot your password?', array('controller' => 'Users', 'action' => 'forgot'), array('style' => 'color: white'));
+echo $this->Html->link('Forgot your password?', array('controller' => 'Users', 'action' => 'forgot'), array('style' => 'color: #444444;'));
 echo $this->Form->end();
 ?>

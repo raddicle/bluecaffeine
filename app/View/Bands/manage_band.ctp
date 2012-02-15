@@ -65,7 +65,7 @@
             autoHeight: false
         });
     
-        $( "#uploadImageDialog:ui-dialog" ).dialog( "destroy" );
+        $( "#uploadImageDialog:ui-dialog" ).dialog("destroy");
 
         $( "#uploadImageDialog" ).dialog({
             autoOpen: false,

@@ -28,6 +28,7 @@ a {
     text-decoration: underline;
     font-weight: bold;
     font-size: 90%;
+    outline: none;
 }
 
 a:hover {
@@ -51,6 +52,10 @@ form {
     -moz-border-radius:5px;
     -webkit-border-radius:5px;	
 } 
+
+fieldset {
+    border: none;
+}
 
 /* input field */
 form input {
@@ -310,14 +315,15 @@ dd {
     display:block
 }
 
-.menuButton:hover {
-    background:url(../img/buttonbgHover.png) repeat-x;
-}
+
 
 /* Login Box */
 .menuButtonBox {
+    background: #d3e2ed;
+    border: 1px solid #7CB7E3;
+    border-radius: 6px;
     position:absolute;
-    top:25px;
+    top:31px;
     right:0;
     display:none;
 }

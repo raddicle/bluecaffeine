@@ -44,7 +44,7 @@
         <!-- Login Starts Here -->
         <a href="#" id="registerButton" class="menuButton"><span>Register</span><em></em></a>
         <a href="#" id="loginButton" class="menuButton"><span>Login</span><em></em></a>
-        <div style="clear:both"></div>
+        
         <div id="loginBox" class="menuButtonBox" style="width: 248px">                
             <?php echo $this->element("security/loginform") ?>
         </div>

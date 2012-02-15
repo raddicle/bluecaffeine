@@ -10,12 +10,24 @@
 </style>
 <script>
     $(function() {
-        $( "#tabs" ).tabs();
-        
+        $("#tabs").tabs();
         $("#registerAsArtist").click(registerAsArtist);
+        //$("#goManageBand").button();
+        $("#createBand").click(createBand);
+        $( "#newBandDialog" ).dialog({
+            autoOpen: false,
+            height: 400,
+            width: 750,
+            modal: false,
+            close: function() {
+            }
+        });
     });
     
-    function registerAsArtist(){
+    
+
+    
+    function registerAsArtist(){;
        
         $.ajax({
             type: "post",
@@ -30,27 +42,64 @@
         return false;    
     }
 
-
+    function createBand(){
+       
+        $.ajax({
+            type: "post",
+            url: "<?php echo $this->Html->url('/Band/newBand'); ?>",
+            success: function(response) {
+                $("#newBandDialog").html(response);
+                $("#newBandDialog").dialog("open");
+            },
+            error:function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus);
+            }
+        });
+        return false;    
+    }
+    
+    function manageBand(){
+        var bandId = $('#userBands').val();
+        document.location = "<?php echo $this->Html->url('/Band/manageBand'); ?>/" + bandId
+        
+    }
 </script>
 
+<div id="newBandDialog" title="Create New Band">
+</div>
+<?php
+$user = $this->Session->read('user');
+$this->set('showAdd', false);
 
-<?php $user = $this->Session->read('user');
-    $this->set('showAdd', false);
-    
-    if ($this->Session->read('Auth.User') && $user['User']['role'] == 'fan') {
-        echo $this->Html->link('Register as artist', array(), array('id'=>'registerAsArtist'
-            , 'style'=>'float:right; margin-top: -25px'));
-    } else {
-        echo $this->Html->link('Create new band', array(), array('id'=>'createBand'
-            , 'style'=>'float:right; margin-top: -25px'));
-    }?>
+if ($this->Session->read('Auth.User') && $user['User']['role'] == 'fan') {
+    echo $this->Html->link('Register as artist', array(), array('id' => 'registerAsArtist'
+        , 'style' => 'float:right; margin-top: -25px'));
+} else if ($this->Session->read('Auth.User') && $user['User']['role'] == 'artist') {
+    echo $this->Html->link('Create new band', array(), array('id' => 'createBand'
+        , 'style' => 'float:right; margin-top: -25px'));
+
+    $userBand = $this->Session->read('bands');
+    ?>     
+    <div style='float:right;'>
+        <select id="userBands">
+            <?php
+            foreach ($userBand as $band) {
+                ?>        
+                <option value="<?php echo $band['Band']['id']; ?>"><?php echo $band['Band']['bandName']; ?></option>
+                <?php
+            }
+            ?>        
+        </select>
+        <button id='goManageBand' onclick='manageBand()'>Manage</button>
+    </div>
+<?php } ?>
 
 <div style="display: table; text-align: center; width: 100%;">
     <div style="display: table-cell; padding-right: 20px; width: 200px;">
         <div class="homeTitle">artists</div>
         <?php echo $this->Html->image('home/artists.png', array('style' => 'width: 200px; height: 150px', 'class' => 'imageBorder')); ?>
         <div class="description">Welcome new fans to your music; take your music places</div>
-        
+
     </div>
 
     <div style="display: table-cell; padding-right: 20px; width: 200px;">
