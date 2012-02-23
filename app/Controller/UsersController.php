@@ -75,6 +75,20 @@ class UsersController extends AppController {
                     $userDetails['User']['fbid'] = $facebookUser['id'];
                     $userDetails['User']['role'] = 'fan';
                     $userDetails = $this->User->save($userDetails);
+                } else {
+                    if ($existUser['User']['role'] == "artist") {
+                        $this->loadModel('Band');
+                        $userBand = $this->Band->find('all', array(
+                            'joins' => array(array(
+                                'table' => 'band_members',
+                                'alias' => 'bandMember',
+                                'type' => 'inner',
+                                'conditions'=> 'bandMember.band_id= Band.id')
+                        )));
+                        $this->Session->write('bands', $userBand);
+                    
+                    }
+                
                 }
 
                 $this->Session->write('facebookUser', $facebookUser);

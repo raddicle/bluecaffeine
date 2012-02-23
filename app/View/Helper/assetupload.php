@@ -12,7 +12,7 @@ class AssetuploadHelper extends AppHelper {
                 , 'id' => '__form' . $dialogId
                 , 'type' => 'file')) .
             '<fieldset>' .
-            $this->Form->input('file_name', array('label' => 'Song', 'id'=>'assetName'.$dialogId)) .
+            $this->Form->input('file_name', array('label' => ($mediaType == 'AUDIO' ? 'Song' : 'Vedio'), 'id'=>'assetName'.$dialogId)) .
             $this->Form->input('genre', array('label' => 'Genre', 'type' => 'select', 'options' => Configure::read('genre'))) .
             $this->Form->input('media_type', array('type' => 'hidden'
                 , 'value' => ($mediaType == 'AUDIO' ? '1' : '2'), 'accept'=>'*.gif')) .

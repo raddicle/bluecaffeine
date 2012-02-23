@@ -1,6 +1,6 @@
 <table cellpadding='0' cellspacing='0' class="dataview">
     <thead>
-    <th width="90%">Song</th>
+    <th width="90%"><?php ($mediaType == 1 ? 'Song' : 'Video') ?></th>
     <th></th>                   
 </thead>
 

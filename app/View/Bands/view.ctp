@@ -42,11 +42,11 @@
                                 style="margin: 3px 0 3px 3px; width: 120px">
                             <span class="ui-button-text">Concert</span>
                         </button>-->
-            <div class="ribbon" style="width: 100%; height: 340px; color: white;">
-                <div style="text-align: center; font-weight: bold;color: white;">
+            <div class="ribbon" style="width: 100%; height: 340px;">
+                <div style="text-align: center; font-weight: bold;">
                     about <?php echo $band['Band']['bandName']; ?>
                 </div>
-                <div style="margin: 10px; color: white;">
+                <div style="margin: 10px;">
                     <?php echo $band['Band']['aboutBand']; ?>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                         if ($asset['media_type'] == 1) :
                             ?>
                             <div>
-                                <?php echo $this->Html->link($asset['file_name'], '/content/band/songs/song_' . $asset['id'] . '.mp3', array('style' => 'color: white;')); ?>
+                                <?php echo $this->Html->link($asset['file_name'], '/content/band/songs/song_' . $asset['id'] . '.mp3'); ?>
                             </div>
                             <?php
                         endif;
@@ -86,7 +86,7 @@
                         if ($asset['media_type'] == 2) :
                             ?>
                             <div>       
-                                <?php echo $this->Html->link($asset['file_name'], '/content/band/songs/song_' . $asset['id'] . '.mp3', array('style' => 'color: white;')); ?>
+                                <?php echo $this->Html->link($asset['file_name'], '/content/band/songs/song_' . $asset['id'] . '.mp3'); ?>
                             </div>
                             <?php
                         endif;
@@ -107,7 +107,7 @@
                         <div>       
                             <?php
                             echo $this->Html->link($news['title'], $news['newsurl']
-                                    , array('class' => 'button', 'target' => '_blank', 'style' => 'color: white; text-decoration:none;'))
+                                    , array('class' => 'button', 'target' => '_blank', 'style' => 'text-decoration:none;'))
                             ?>
                         </div>
                         <?php

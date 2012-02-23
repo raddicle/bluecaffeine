@@ -113,23 +113,6 @@
             $( "#accSettingDialog" ).dialog( "open" );
         });
 
-
-        $( "#newBandDialog:ui-dialog" ).dialog( "destroy" );
-        $( "#newBandDialog" ).dialog({
-            autoOpen: false,
-            height: 420,
-            width: 500,
-            modal: true,
-            close: function() {
-            }
-        });
-        $( "#newBand" )
-        .button()
-        .click(function() {
-            $( "#newBandDialog" ).dialog( "open" );
-        });
-
-
         $( "#emailWebMasterDialog:ui-dialog" ).dialog( "destroy" );
         $( "#emailWebMasterDialog" ).dialog({
             autoOpen: false,
@@ -171,10 +154,6 @@
 <!-- Account Setting Dialog-->
 <div id="accSettingDialog" title="Account Setting">
     <?php echo $this->element('Bands/member'); ?>
-</div>
-
-<div id="newBandDialog" title="Create New Band">
-    <?php echo $this->element('Bands/newband'); ?>
 </div>
 
 <!-- Email Web master Dialog-->
@@ -224,9 +203,6 @@
     <div style="text-align: center;">
         <button id="accountSetting" class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all" style="margin: 3px; width: 250px">
             <span class="ui-button-text">Account Setting</span>
-        </button>
-        <button id="newBand" class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all" style="margin: 3px; width: 250px">
-            <span class="ui-button-text">Create New Band</span>
         </button>
         <button id="emailWebMaster" class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all" style="margin: 3px; width: 250px">
             <span id="contactWebMaster" class="ui-button-text">Message to webmaster</span>

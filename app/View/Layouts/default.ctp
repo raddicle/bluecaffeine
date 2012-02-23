@@ -13,6 +13,7 @@
     echo $this->Html->css('cake.generic');
     echo $this->Html->css('imgareaselect-default');
     echo $this->Html->css('jquery-ui');
+    echo $this->Html->css('kwicks');
     print $this->Html->script('jquery');
     print $this->Html->script('jquery-form');
     print $this->Html->script('jquery-ui-min');
@@ -20,6 +21,7 @@
     print $this->Html->script('ckeditor/ckeditor');
     print $this->Html->script('ckeditor/adapters/jquery');
     print $this->Html->script('common');
+    print $this->Html->script('kwicks');
     ?>
     <script>
         function loadPage(actionUrl) {
@@ -34,20 +36,53 @@
                 }
             });
         }
+
+        $(function() {
+            my_kwicks();
+        })
+        
+        function my_kwicks(){
+            $('.kwicks').kwicks({
+                        duration: 300,   
+                max: 200,  
+                spacing:  0  
+            });
+        }  
+
     </script>
 </head>
 <body style="height: 100%;">
     <div style="width: 1000px; margin-left: auto; margin-right: auto;">
         <?php echo $this->element('security/credentials'); ?>
     </div>
-    <div id="bar">
+ 
+    
+    <div>
         <div id="container" style="width: 1000px; margin-left: auto; margin-right: auto;">
             <?php
             echo $this->Html->image('logo.png', array('url' => '/home', 'style' => 'width: 120px;'));
             ?>
         </div>
     </div>
-    <div style="width:550px;  margin-top: -30px; margin-left: auto; margin-right: auto;">                
+    <div style="width:550px;  margin-top: -60px; margin-left: auto; margin-right: auto;">  
+        <ul class="kwicks">  
+        <li id="kwick1">
+            <?php
+                $userDetails = $this->Session->read('user');
+                if ($userDetails['User']['role'] == 'artist'):
+                    echo $this->Html->link('ARTIST', array('controller' => 'Users', 'action' => 'userprofile'));
+                else:
+                    echo $this->Html->link('ARTIST', array('controller' => 'band', 'action' => 'index'
+                        , $userDetails['User']['id']));
+                endif
+                ?>
+        </li>  
+        <li id="kwick2"><a href="#">Contact</a></li>  
+        <li id="kwick3"><a href="#">Downloads</a></li>  
+        <li id="kwick4"><a href="#">Search</a></li>  
+    </ul>  
+    </div>
+<!--    <div style="width:550px;  margin-top: -30px; margin-left: auto; margin-right: auto;">                
         <?php
         echo $this->Html->image(
                 'menu/menu_left_blue.png', array('style' => 'float:left;'));
@@ -79,7 +114,7 @@
 echo $this->Html->image(
         'menu/menu_right_blue.png', array('style' => 'float:left'));
 ?>
-    </div>
+    </div>-->
     <div style="width: 1000px; margin-left: auto; margin-right: auto; margin-top:60px;">
         <div id="siteContentArea" style="display: table-cell; width: 1000px;">
             <?php echo $content_for_layout; ?>
@@ -90,15 +125,12 @@ echo $this->Html->image(
             </div>
         <?php endif ?>
     </div>
-
+<!--
     <div>            
 <?php echo $this->element('sql_dump'); ?>    
-    </div>
+    </div>-->
 
     <script type="text/javascript" src="http://webplayer.yahooapis.com/player-beta.js"> </script> 
 </body>
 <?php echo $this->Facebook->init(); ?>
 </html>
-
-
-

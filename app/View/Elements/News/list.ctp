@@ -12,6 +12,12 @@
               $("#BandNewsDescription").val($.trim(response.BandNews.description));
             },
             error:function (XMLHttpRequest, textStatus, errorThrown) {
+            },
+            beforeSend: function(){
+                $('*').css('cursor', 'wait');
+            },
+            complete: function (){
+                $('*').css('cursor', 'auto');
             }
         });
     }
@@ -23,6 +29,7 @@
             event.stopPropagation();
             addNews();
         }); 
+        
     });
 
     function addNews(){
