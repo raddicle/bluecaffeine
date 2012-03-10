@@ -147,7 +147,17 @@
     }
     
 </script>
+<?php
+                function searchForFile($fileToSearchFor) {
+                    $numberOfFiles = count(glob($fileToSearchFor));
+                    if ($numberOfFiles == 0) {
+                        return(FALSE);
+                    } else {
+                        return(TRUE);
+                    }
+                }
 
+?>
 <!-- Image Upload Dialog-->
 <div id="uploadImageDialog" title="Upload band's profile image">
 </div>
@@ -168,10 +178,19 @@
 
 <div style="width: 39%; float: left;">
     <?php
-    echo $this->Html->image('/content/band/thumbnail/band_' . strtolower($band['Band']['id']), array('style' => 'width: 100%', 'id' => "profileImage",
-        'onmouseover' => 'document.getElementById("bandImage").style.visibility = "visible"',
-        'onmouseout' => 'document.getElementById("bandImage").style.visibility = "hidden"',
-    ));
+    if (searchForFile(WWW_ROOT . 'content/users/thumbnail/user_' . $band['Band']['id'] . '.*')) {
+        echo $this->Html->image('/content/band/thumbnail/band_' . strtolower($band['Band']['id']), array('style' => 'width: 100%', 'id' => "profileImage",
+            'onmouseover' => 'document.getElementById("bandImage").style.visibility = "visible"',
+            'onmouseout' => 'document.getElementById("bandImage").style.visibility = "hidden"',
+        ));
+    } else {
+
+        echo $this->Html->image('/content/users/blank.png', array('id' => "profileImage",
+            'onmouseover' => 'document.getElementById("userImage").style.visibility = "visible"',
+            'onmouseout' => 'document.getElementById("userImage").style.visibility = "hidden"'
+            , 'style' => 'border-radius: 6px; width: 80px; vertical-align: top;'));
+    }
+
     ?>
     <div style="border: 1px solid lightgrey;">
         <div id="bandImage" style="margin-top: -25px; margin-left: 10px; visibility: hidden;"

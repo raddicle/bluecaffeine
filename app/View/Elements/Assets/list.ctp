@@ -11,7 +11,11 @@ foreach ($band['Bandasset'] as $asset):
         <tr>
             <td>
                 <?php
-                echo $this->Html->link($asset['file_name'], '/content/band/songs/song_' . $asset['id'] . '.mp3');
+                 if ($asset['link'] != "") {
+                     echo $this->Html->link($asset['file_name'], $asset['link']);
+                 } else {
+                    echo $this->Html->link($asset['file_name'], '/content/band/songs/song_' . $asset['id'] . '.mp3');
+                 }
                 ?>
             </td>
             <td>
